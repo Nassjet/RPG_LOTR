@@ -105,11 +105,11 @@ public abstract class Personnage {
         System.out.println("Points de vie: " + health);
         System.out.println("Arme équipée: " + armeEquipee.name);
         System.out.println("Dégâts de l'arme: " + armeEquipee.degats);
-        System.out.println("Vous avez:" + cash + "pièces");
+        System.out.println("Vous avez:" + cash + " pièces");
     }
 
     public void afficherInventaire() {
-        this.inventaire.afficherArmes();
+        this.inventaire.afficherArmes(this);
     }
 
     public void depenserCash(int montant){

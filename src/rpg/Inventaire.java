@@ -2,10 +2,11 @@ package rpg;
 
 import rpg.Armes.Arme;
 
+import rpg.Personnage;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Inventaire {
+public class Inventaire implements ObjetInventaire {
     private ArrayList<Arme> armes; // Liste d'armes
 
     public Inventaire() {
@@ -17,11 +18,16 @@ public class Inventaire {
         System.out.println("Arme ajouté à l'inventaire");
     }
 
+    @Override
+    public void supprimerArme(Arme arme) {
+        // TODO
+    }
+
     public ArrayList<Arme> getArmes() {
         return armes;
     }
 
-    public void afficherArmes() {
+    public void afficherArmes(Personnage personnage) {
         if (armes.isEmpty()) {
             System.out.println("Vous n'avez pas d'armes dans votre inventaire.");
         } else {
@@ -40,7 +46,7 @@ public class Inventaire {
             if (choix > 0 && choix <= armes.size()) {
                 Arme armeChoisie = armes.get(choix - 1);
                 System.out.println("Vous avez choisi d'utiliser : " + armeChoisie.getName());
-                // Ici, vous pouvez ajouter la logique pour équiper l'arme ou l'utiliser
+                personnage.setArmeEquipee(armeChoisie); // équipe l'arme choisie
             } else if (choix == 0) {
                 System.out.println("Aucune arme sélectionnée.");
             } else {

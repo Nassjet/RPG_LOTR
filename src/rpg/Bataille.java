@@ -1,9 +1,9 @@
 package rpg;
 
 import rpg.Armes.*;
-import Races.Elfe;
-import Races.Hobbit;
-import Races.Homme;
+import rpg.Races.Elfe;
+import rpg.Races.Hobbit;
+import rpg.Races.Homme;
 import rpg.Races.Nain;
 
 import java.util.Scanner;
@@ -78,7 +78,9 @@ public class Bataille {
             System.out.println("\n\n Menu Principal");
             System.out.println("1. Aller dans votre inventaire");
             System.out.println("2. Aller à la boutique");
-            System.out.println("3. Quitter le jeu");
+            System.out.println("3. Afficher vos stats");
+            System.out.println("4. Quitter le jeu");
+
             System.out.print("Choisissez une option : ");
             int choixMenu = scanner.nextInt();
 
@@ -92,9 +94,13 @@ public class Bataille {
                     boutiqueArme.acheterArme(personnage, achat);
                     break;
                 case 3:
+                    personnage.getStats();
+                    break;
+                case 4:
                     System.out.println("Merci d'avoir joué");
                     jeuEnCours  = false;
                     break;
+
                 default:
                     System.out.println("Choix invalide, veuillez réessayer.");
                     break;
