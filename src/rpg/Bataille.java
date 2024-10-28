@@ -1,6 +1,8 @@
 package rpg;
 
 import rpg.Armes.*;
+import rpg.Monstres.Monstre;
+import rpg.Monstres.Orc;
 import rpg.Races.Elfe;
 import rpg.Races.Hobbit;
 import rpg.Races.Homme;
@@ -79,7 +81,8 @@ public class Bataille {
             System.out.println("1. Aller dans votre inventaire");
             System.out.println("2. Aller à la boutique");
             System.out.println("3. Afficher vos stats");
-            System.out.println("4. Quitter le jeu");
+            System.out.println("4. Démarrer un combat");
+            System.out.println("5. Quitter le jeu");
 
             System.out.print("Choisissez une option : ");
             int choixMenu = scanner.nextInt();
@@ -91,12 +94,21 @@ public class Bataille {
                 case 2:
                     boutiqueArme.afficherArmesBoutique();
                     int achat = scanner.nextInt();
+                    if (achat == 0){
+                        System.out.println("Vous avez quitter la boutique d'arme. ");
+                        break;
+                    }
                     boutiqueArme.acheterArme(personnage, achat);
                     break;
                 case 3:
                     personnage.getStats();
                     break;
                 case 4:
+                    Monstre orc = new Orc("Orc");
+                    Combat combat = new Combat(personnage, orc);
+                    combat.demarrerCombat();
+                    break;
+                case 5:
                     System.out.println("Merci d'avoir joué");
                     jeuEnCours  = false;
                     break;
@@ -106,5 +118,7 @@ public class Bataille {
                     break;
             }
         }
+
+
     }
 }

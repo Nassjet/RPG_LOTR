@@ -37,6 +37,7 @@ public class BoutiqueArme {
                 Arme arme = armesDisponibles.get(i);
                 System.out.println((i + 1) + ". " + arme.getName() + " - Dégâts : " + arme.getDegats() + " - Prix : " + arme.getPrix() + " pièces d'or.");
             }
+            System.out.println("0. quitter la boutique");
         }
     }
     public void acheterArme(Personnage personnage, int achat) {
@@ -57,4 +58,5 @@ public class BoutiqueArme {
             System.out.println("Votre arme a été achetée et ajoutée à votre inventaire.");
         }
     }
+
 }
