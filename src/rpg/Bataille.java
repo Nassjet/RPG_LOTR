@@ -73,8 +73,8 @@ public class Bataille {
         }
 
         // Initialiser la carte
-        int largeurCarte = 5; // Exemple de largeur
-        int hauteurCarte = 5; // Exemple de hauteur
+        int largeurCarte = 8; // Exemple de largeur
+        int hauteurCarte = 8; // Exemple de hauteur
         Carte carte = new Carte(largeurCarte, hauteurCarte);
 
         // Afficher les stats du personnage choisi
@@ -102,7 +102,7 @@ public class Bataille {
                     System.out.println("Vous entrez dans le donjon...");
                     // Afficher la carte
                     carte.placerJoueurDebut(personnage);
-                    carte.ajouterElementsAleatoires(0,0);
+                    carte.ajouterElementsAleatoires(1,2);
                     carte.afficherCarte();
                     boolean dansDonjon = true;
                     while (dansDonjon) {

@@ -77,9 +77,18 @@ public class Carte {
         joueurY = 0; // Position Y du joueur en haut à gauche
         map[joueurX][joueurY] = new JoueurTile(joueur);
     }
-
+    public void resetElements() {
+        for (int y = 0; y < hauteur; y++) {
+            for (int x = 0; x < largeur; x++) {
+                if (map[x][y] instanceof MonstreTile || map[x][y] instanceof ObstacleTile) {
+                    map[x][y] = new EmptyTile(); // Réinitialiser les tuiles de monstres et d'obstacles en tuiles vides
+                }
+            }
+        }
+    }
     // Méthode pour ajouter des monstres et obstacles aléatoirement
     public void ajouterElementsAleatoires(int nombreMonstres, int nombreObstacles) {
+        resetElements();
         ajouterMonstresAleatoires(nombreMonstres);
         ajouterElementsDeType(nombreObstacles, ObstacleTile.class);
     }
@@ -197,7 +206,7 @@ public class Carte {
 
                 if (tuileAdjacente instanceof MonstreTile) {
                     Monstre monstre = ((MonstreTile) tuileAdjacente).getMonstre();
-                    Combat combat = new Combat(joueur, monstre);
+                    Combat combat = new Combat(joueur, monstre, this,getDirectionFromCoords(dir));
                     String resultat = combat.demarrerCombat();
                     if (resultat.equals("win")) {
                         map[adjX][adjY] = new EmptyTile(); // Monstre vaincu, tuile vide
@@ -218,4 +227,42 @@ public class Carte {
             }
         }
     }
+
+    private char getDirectionFromCoords(int[] dir) {
+        if (dir[0] == 0 && dir[1] == -1) return 'N';
+        if (dir[0] == 0 && dir[1] == 1) return 'S';
+        if (dir[0] == -1 && dir[1] == 0) return 'O';
+        if (dir[0] == 1 && dir[1] == 0) return 'E';
+        return ' ';
+    }
+    public void fuite(Personnage joueur, char direction) {
+        int newX = joueurX;
+        int newY = joueurY;
+
+        switch (direction) {
+            case 'N': // Haut
+                newY++;
+                break;
+            case 'S': // Bas
+                newY--;
+                break;
+            case 'E': // Droite
+                newX--;
+                break;
+            case 'O': // Gauche
+                newX++;
+                break;
+        }
+
+        if (newX >= 0 && newX < largeur && newY >= 0 && newY < hauteur && map[newX][newY] instanceof EmptyTile) {
+            map[joueurX][joueurY] = new EmptyTile(); // Laisser l'ancienne position vide
+            joueurX = newX;
+            joueurY = newY;
+            map[joueurX][joueurY] = new JoueurTile(joueur);
+            System.out.println("Vous avez fui en reculant.");
+        } else {
+            System.out.println("Vous n'avez pas trouvé de chemin pour fuir, vous restez sur place !");
+        }
+    }
+
 }
