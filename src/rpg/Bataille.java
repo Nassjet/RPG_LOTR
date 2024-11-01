@@ -39,7 +39,7 @@ public class Bataille {
                 personnage = new Hobbit(nomPersonnage, anneau);
                 personnage.setArmeEquipee(anneau);
                 personnage.getInventaire().ajouterArme(anneau);
-                System.out.println("L'anneau de pouvoir à était équipée et est dans votre inventaire");
+                System.out.println("L'anneau de pouvoir a été équipé et est dans votre inventaire");
                 break;
             case 2:
                 Arme anduril = new Anduril();
@@ -53,14 +53,14 @@ public class Bataille {
                 personnage = new Nain(nomPersonnage, hache);
                 personnage.setArmeEquipee(hache);
                 personnage.getInventaire().ajouterArme(hache);
-                System.out.println("L'Hache de Guerre de Gimli a était équipée et est dans votre inventaire");
+                System.out.println("La hache de guerre de Gimli a été équipée et est dans votre inventaire");
                 break;
             case 4:
                 Arme arc = new ArcElfique();
                 personnage = new Elfe(nomPersonnage, arc);
                 personnage.setArmeEquipee(arc);
                 personnage.getInventaire().ajouterArme(arc);
-                System.out.println("L'arc de Legolas à était équipée et est dans votre inventaire");
+                System.out.println("L'arc de Legolas a été équipé et est dans votre inventaire");
                 break;
             default:
                 System.out.println("Choix invalide, un Hobbit a été sélectionné par défaut.");
@@ -68,21 +68,25 @@ public class Bataille {
                 personnage = new Hobbit(nomPersonnage, anneauDefault);
                 personnage.setArmeEquipee(anneauDefault);
                 personnage.getInventaire().ajouterArme(anneauDefault);
-                System.out.println("L'anneau de pouvoir à était équipée et est dans votre inventaire");
+                System.out.println("L'anneau de pouvoir a été équipé et est dans votre inventaire");
                 break;
         }
+
+        // Initialiser la carte
+        int largeurCarte = 5; // Exemple de largeur
+        int hauteurCarte = 5; // Exemple de hauteur
+        Carte carte = new Carte(largeurCarte, hauteurCarte);
 
         // Afficher les stats du personnage choisi
         personnage.getStats();
 
         boolean jeuEnCours = true;
         while (jeuEnCours) {
-            System.out.println("\n\n Menu Principal");
+            System.out.println("\n\nMenu Principal");
             System.out.println("1. Aller dans votre inventaire");
-            System.out.println("2. Aller à la boutique");
-            System.out.println("3. Afficher vos stats");
-            System.out.println("4. Démarrer un combat");
-            System.out.println("5. Quitter le jeu");
+            System.out.println("2. Afficher vos stats");
+            System.out.println("3. Accéder au donjon");
+            System.out.println("4. Quitter le jeu");
 
             System.out.print("Choisissez une option : ");
             int choixMenu = scanner.nextInt();
@@ -92,33 +96,59 @@ public class Bataille {
                     personnage.afficherInventaire();
                     break;
                 case 2:
-                    boutiqueArme.afficherArmesBoutique();
-                    int achat = scanner.nextInt();
-                    if (achat == 0){
-                        System.out.println("Vous avez quitter la boutique d'arme. ");
-                        break;
-                    }
-                    boutiqueArme.acheterArme(personnage, achat);
-                    break;
-                case 3:
                     personnage.getStats();
                     break;
-                case 4:
-                    Monstre orc = new Orc("Orc");
-                    Combat combat = new Combat(personnage, orc);
-                    combat.demarrerCombat();
+                case 3:
+                    System.out.println("Vous entrez dans le donjon...");
+                    // Afficher la carte
+                    carte.placerJoueurDebut(personnage);
+                    carte.ajouterElementsAleatoires(0,0);
+                    carte.afficherCarte();
+                    boolean dansDonjon = true;
+                    while (dansDonjon) {
+                        System.out.println("\nActions dans le donjon:");
+                        System.out.println("1. Se déplacer");
+                        System.out.println("2. Afficher l'inventaire");
+                        System.out.println("3. Afficher les stats");
+                        System.out.println("4. Quitter le donjon");
+
+                        int choixDonjon = scanner.nextInt();
+
+                        switch (choixDonjon) {
+                            case 1:
+                                System.out.println("Entrez la direction (N, S, E, O):");
+                                char direction = scanner.next().charAt(0);
+                                boolean sortie = carte.deplacerJoueur(direction, personnage);
+                                carte.afficherCarte();
+                                if (sortie) {
+                                    dansDonjon = false;
+                                    jeuEnCours = false;
+                                }
+                                break;
+                            case 2:
+                                personnage.afficherInventaire();
+                                break;
+                            case 3:
+                                personnage.getStats();
+                                break;
+                            case 4:
+                                System.out.println("Vous quittez le donjon.");
+                                dansDonjon = false;
+                                break;
+                            default:
+                                System.out.println("Choix invalide, veuillez réessayer.");
+                        }
+                    }
+
                     break;
-                case 5:
-                    System.out.println("Merci d'avoir joué");
+                case 4:
+                    System.out.println("Merci d'avoir joué !");
                     jeuEnCours  = false;
                     break;
-
                 default:
                     System.out.println("Choix invalide, veuillez réessayer.");
                     break;
             }
         }
-
-
     }
 }

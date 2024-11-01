@@ -18,12 +18,14 @@ public class BoutiqueArme {
         desArmes.add(new Arme("Dague de l'ombre", 15, 1, "Rare", 30));
         desArmes.add(new Arme("Hache de guerre", 25, 7, "Peu commun", 40));
         desArmes.add(new Arme("Marteau du destin", 30, 10, "Légendaire", 60));
+
+        // Générer les armes disponibles de manière aléatoire
+        genererArmesAleatoires();
     }
 
     public void genererArmesAleatoires() {
         // Mélanger la liste des armes prédéfinies
         Collections.shuffle(desArmes);
-
         // Sélectionner les 3 premières armes mélangées
         armesDisponibles = desArmes.subList(0, 3);
     }
@@ -40,15 +42,14 @@ public class BoutiqueArme {
             System.out.println("0. quitter la boutique");
         }
     }
+
     public void acheterArme(Personnage personnage, int achat) {
         if (achat < 1 || achat > armesDisponibles.size()) {
-            System.out.println("Tu as tapé le numéro d'une arme qui n'existe pas ! ");
+            System.out.println("Tu as tapé le numéro d'une arme qui n'existe pas !");
             return;
         }
-
         Arme armeAchat = armesDisponibles.get(achat - 1);
         int prixArme = armeAchat.getPrix();
-
         if (personnage.getCash() < prixArme) {
             System.out.println("Vous n'avez pas assez de pièces d'or !! Revenez une autre fois.");
         } else {
@@ -58,5 +59,4 @@ public class BoutiqueArme {
             System.out.println("Votre arme a été achetée et ajoutée à votre inventaire.");
         }
     }
-
 }

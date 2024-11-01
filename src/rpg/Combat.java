@@ -14,7 +14,7 @@ public class Combat {
         this.monstre = monstre;
     }
 
-    public void demarrerCombat() {
+    public String demarrerCombat() {
         System.out.println("Un " + monstre.getNom() + " apparait !");
 
         // Boucle de combat jusqu'à ce qu'il y ait un vainqueur
@@ -27,16 +27,19 @@ public class Combat {
             }
         }
 
-        // Affiche le résultat du combat
+        // Retourne le résultat du combat
         if (joueur.getHealth() > 0) {
             System.out.println("Vous avez vaincu " + monstre.getNom() + " !");
+            return "win";
         } else {
             System.out.println("Vous avez été vaincu par " + monstre.getNom() + "...");
+            return "lose";
         }
     }
 
 
-    private void tourJoueur(){
+
+    public void tourJoueur(){
         System.out.println("===============");
         System.out.println("C'est votre tour !");
 
@@ -72,7 +75,7 @@ public class Combat {
         }
     }
 
-    private void tourMonstre() {
+    public void tourMonstre() {
         System.out.println("===============");
         System.out.println("C'est au tour du " + monstre.getNom() + " de vous attaquer !");
 

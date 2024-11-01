@@ -1379,7 +1379,7 @@
 											"top": 701,
 											"width": 231,
 											"height": 13,
-											"text": "+map: Map",
+											"text": "+map: rpg.Map",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1837,7 +1837,7 @@
 											"top": 359,
 											"width": 223,
 											"height": 13,
-											"text": "Map"
+											"text": "rpg.Map"
 										},
 										{
 											"_type": "LabelView",
@@ -5664,7 +5664,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Map",
+					"name": "rpg.Map",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
