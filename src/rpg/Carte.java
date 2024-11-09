@@ -8,11 +8,13 @@ import rpg.Monstres.MageNoir;
 import rpg.Monstres.Monstre;
 import rpg.Races.Hobbit;
 
+import java.io.*;
+
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Carte {
+public class Carte implements Serializable {
     private int largeur; // Largeur de la carte
     private int hauteur; // Hauteur de la carte
     private Tile[][] map; // Grille de Tiles
@@ -245,24 +247,9 @@ public class Carte {
         if (dir[0] == 1 && dir[1] == 0) return 'E';
         return ' ';
     }
-    public void fuite(Personnage joueur, char direction) {
+    public void fuite(Personnage joueur) {
         int newX = joueurX;
         int newY = joueurY;
-
-        switch (direction) {
-            case 'N': // Haut
-                newY++;
-                break;
-            case 'S': // Bas
-                newY--;
-                break;
-            case 'E': // Droite
-                newX--;
-                break;
-            case 'O': // Gauche
-                newX++;
-                break;
-        }
 
         if (newX >= 0 && newX < largeur && newY >= 0 && newY < hauteur && map[newX][newY] instanceof EmptyTile) {
             map[joueurX][joueurY] = new EmptyTile(); // Laisser l'ancienne position vide
@@ -272,6 +259,24 @@ public class Carte {
             System.out.println("Vous avez fui en reculant.");
         } else {
             System.out.println("Vous n'avez pas trouvé de chemin pour fuir, vous restez sur place !");
+        }
+    }
+
+    public void sauvegarderCarte(String nomFichier) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomFichier))) {
+            oos.writeObject(this);  // Sérialise l'objet 'this' (la carte)
+            System.out.println("Carte sauvegardée avec succès !");
+        } catch (IOException e) {
+            System.out.println("Erreur lors de la sauvegarde de la carte : " + e.getMessage());
+        }
+    }
+
+    public static Carte chargerCarte(String nomFichier) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomFichier))) {
+            return (Carte) ois.readObject();  // Restaure l'objet Carte à partir du fichier
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Erreur lors du chargement de la carte : " + e.getMessage());
+            return null;  // En cas d'erreur, retourne null
         }
     }
 

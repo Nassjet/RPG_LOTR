@@ -4,6 +4,7 @@ import rpg.Armes.Arme;
 
 import rpg.Personnage;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Inventaire implements ObjetInventaire {
@@ -37,13 +38,23 @@ public class Inventaire implements ObjetInventaire {
                 System.out.println((i + 1) + ". " + arme.getName() + " - Dégâts : " + arme.getDegats());
             }
 
-            // Demander au joueur quelle arme il souhaite utiliser
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Quelle arme souhaitez-vous utiliser ? (Entrez le numéro de l'arme ou 0 pour annuler)");
+            int choix = -1;
+            while ( choix < 0 || choix > armes.size() ) {
+                // Demander au joueur quelle arme il souhaite utiliser
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Quelle arme souhaitez-vous utiliser ? (Entrez le numéro de l'arme ou 0 pour annuler)");
+                try {
+                    choix = scanner.nextInt();
+                    if (choix < 1 || choix > armes.size()) {
+                        System.out.println("Option invalide ! Veuillez entrer un nombre.");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Option invalide ! Veuillez entrer un nombre.");
+                }
+            }
 
-            int choix = scanner.nextInt();
 
-            if (choix > 0 && choix <= armes.size()) {
+            if (choix > 0 && choix <= armes.size()) { // à ne pas toucher parce que sinon boucle
                 Arme armeChoisie = armes.get(choix - 1);
                 System.out.println("Vous avez choisi d'utiliser : " + armeChoisie.getName());
                 personnage.setArmeEquipee(armeChoisie); // équipe l'arme choisie

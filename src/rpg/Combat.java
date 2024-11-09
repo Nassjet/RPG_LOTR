@@ -30,7 +30,7 @@ public class Combat {
         // Retourne le résultat du combat
         if (escape) {
             System.out.println("Vous avez fui le combat !");
-            carte.fuite(joueur, direction); // Appeler la méthode de fuite sur la carte
+            carte.fuite(joueur); // Appeler la méthode de fuite sur la carte
             return "flee";
         } else if (joueur.getHealth() > 0) {
             System.out.println("Vous avez vaincu " + monstre.getNom() + " !");
