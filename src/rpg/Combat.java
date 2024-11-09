@@ -37,6 +37,9 @@ public class Combat {
             return "win";
         } else {
             System.out.println("Vous avez été vaincu par " + monstre.getNom() + "...");
+            System.out.println("Game Over !");
+            //Bon ici je ferme complet le jeu mais avec une interface graphique je ferai recommencer le joueur avec un "Continue ?"
+            System.exit(0);
             return "lose";
         }
     }
@@ -96,4 +99,7 @@ public class Combat {
         monstre.setHealth(monstre.getHealth() - degatsInfliges);
         System.out.println("Vous attaquez le " + monstre.getNom() + " et lui infligez " + degatsInfliges + " points de dégâts !");
     }
+
+
+
 }

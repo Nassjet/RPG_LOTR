@@ -15,14 +15,26 @@ public class Bataille {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bienvenue dans le Seigneur des Anneaux RPG !");
-        System.out.println("Choisissez votre race : ");
-        System.out.println("1. Hobbit");
-        System.out.println("2. Homme");
-        System.out.println("3. Nain");
-        System.out.println("4. Elfe");
+        int choix = 0;
+        while (true) {
+            System.out.println("Choisissez votre race : ");
+            System.out.println("1. Hobbit");
+            System.out.println("2. Homme");
+            System.out.println("3. Nain");
+            System.out.println("4. Elfe");
 
-        int choix = scanner.nextInt();
-        scanner.nextLine();
+            if (scanner.hasNextInt()) {
+                choix = scanner.nextInt();
+                if (choix >= 1 && choix <= 4) {
+                    scanner.nextLine(); // Consommer la fin de ligne
+                    break; // Sortir de la boucle si la saisie est valide
+                }
+            } else {
+                scanner.nextLine(); // Consommer l'entrée invalide
+            }
+            System.out.println("Entrée invalide, veuillez saisir un nombre entre 1 et 4.");
+        }
+
 
         // Demander au joueur de choisir un nom
         System.out.println("Veuillez entrer le nom de votre personnage : ");
@@ -116,13 +128,27 @@ public class Bataille {
 
                         switch (choixDonjon) {
                             case 1:
-                                System.out.println("Entrez la direction (N, S, E, O):");
-                                char direction = scanner.next().charAt(0);
-                                boolean sortie = carte.deplacerJoueur(direction, personnage);
-                                carte.afficherCarte();
-                                if (sortie) {
-                                    dansDonjon = false;
-                                    jeuEnCours = false;
+                                boolean enDeplacement = true;
+                                while (enDeplacement) {
+                                    System.out.println("Entrez la direction (H pour haut, B pour bas, D pour droite, G pour gauche), ou 'Q' pour revenir au menu:");
+                                    char direction = scanner.next().toUpperCase().charAt(0);
+
+                                    if (direction == 'Q') {  // Permet de revenir au menu de base
+                                        enDeplacement = false;
+                                        System.out.println("Retour au menu principal du donjon.");
+                                    } else if (direction == 'H' || direction == 'B' || direction == 'D' || direction == 'G') {
+                                        boolean sortie = carte.deplacerJoueur(direction, personnage);
+                                        carte.afficherCarte();
+
+                                        if (sortie) {
+                                            System.out.println("Vous avez atteint la sortie !");
+                                            dansDonjon = false;
+                                            jeuEnCours = false;
+                                            enDeplacement = false; // Sort de la boucle de déplacement
+                                        }
+                                    } else {
+                                        System.out.println("Direction invalide. Veuillez entrer une direction correcte (H, B, D, G) ou 'Q' pour quitter.");
+                                    }
                                 }
                                 break;
                             case 2:
@@ -139,6 +165,7 @@ public class Bataille {
                                 System.out.println("Choix invalide, veuillez réessayer.");
                         }
                     }
+
 
                     break;
                 case 4:

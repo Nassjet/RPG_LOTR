@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c614032-4d1d-4f61-8c5a-cf689ebaad56" name="Changes" comment="carte done, a lot of bugs, a lot of upgrades to make the game playable">
+    <list default="true" id="8c614032-4d1d-4f61-8c5a-cf689ebaad56" name="Changes" comment="ajout de la fuite, et resetElements dans Carte">
+      <change afterPath="$PROJECT_DIR$/src/interface_graphique/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rpg/Bataille.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/Bataille.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rpg/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/Carte.java" afterDir="false" />
@@ -55,16 +56,20 @@
   &quot;keyToString&quot;: {
     &quot;Application.Bataille.executor&quot;: &quot;Run&quot;,
     &quot;Application.Carte.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainFrame.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/java/RPG_LOTR_map&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java/RPG_LOTR&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;D:/java/RPG_LOTR/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -103,9 +108,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="interface_graphique.MainFrame" />
+      <module name="RPG_LOTR" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="interface_graphique.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Bataille" />
+        <item itemvalue="Application.MainFrame" />
         <item itemvalue="Application.Carte" />
       </list>
     </recent_temporary>
@@ -146,7 +165,15 @@
       <workItem from="1730116323908" duration="3078000" />
       <workItem from="1730382543975" duration="2186000" />
       <workItem from="1730460317097" duration="10067000" />
-      <workItem from="1730478747687" duration="3551000" />
+      <workItem from="1730478747687" duration="3710000" />
+      <workItem from="1730485942550" duration="498000" />
+      <workItem from="1730564981855" duration="1309000" />
+      <workItem from="1730590028849" duration="597000" />
+      <workItem from="1730713591489" duration="541000" />
+      <workItem from="1730804482371" duration="16000" />
+      <workItem from="1730804596916" duration="1151000" />
+      <workItem from="1730969725916" duration="757000" />
+      <workItem from="1731170470251" duration="2947000" />
     </task>
     <task id="LOCAL-00001" summary="création monstre et début de combat">
       <option name="closed" value="true" />
@@ -164,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730477592063</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ajout de la fuite, et resetElements dans Carte">
+      <option name="closed" value="true" />
+      <created>1730482414752</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730482414752</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,7 +220,8 @@
     <MESSAGE value="first commit, personnage / boutique d'armes ok" />
     <MESSAGE value="création monstre et début de combat" />
     <MESSAGE value="carte done, a lot of bugs, a lot of upgrades to make the game playable" />
-    <option name="LAST_COMMIT_MESSAGE" value="carte done, a lot of bugs, a lot of upgrades to make the game playable" />
+    <MESSAGE value="ajout de la fuite, et resetElements dans Carte" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de la fuite, et resetElements dans Carte" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RPG_LOTR$Bataille.ic" NAME="Bataille Coverage Results" MODIFIED="1729428386271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

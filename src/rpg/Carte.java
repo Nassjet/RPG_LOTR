@@ -8,6 +8,7 @@ import rpg.Monstres.MageNoir;
 import rpg.Monstres.Monstre;
 import rpg.Races.Hobbit;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -151,16 +152,16 @@ public class Carte {
         int newY = joueurY;
 
         switch (direction) {
-            case 'N': // Haut
+            case 'H': // Haut
                 newY--;
                 break;
-            case 'S': // Bas
+            case 'B': // Bas
                 newY++;
                 break;
-            case 'E': // Droite
+            case 'D': // Droite
                 newX++;
                 break;
-            case 'O': // Gauche
+            case 'G': // Gauche
                 newX--;
                 break;
             default:
@@ -218,9 +219,18 @@ public class Carte {
                     BoutiqueArme boutique = ((BoutiqueTile) tuileAdjacente).getBoutiqueArme();
                     boutique.afficherArmesBoutique();
                     System.out.println("Entrez le numéro de l'arme que vous voulez acheter, ou 0 pour quitter :");
+
                     Scanner scanner = new Scanner(System.in);
-                    int choix = scanner.nextInt();
-                    if (choix != 0) {
+                    int choix = -1; // initialisation en dehors de try-catch pour le tester après
+
+                    try {
+                        choix = scanner.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Entrée invalide ! Veuillez entrer un nombre.");
+                        scanner.nextLine(); // nettoyer le scanner en cas de saisie incorrecte
+                    }
+
+                    if (choix > 0) {
                         boutique.acheterArme(joueur, choix);
                     }
                 }
