@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c614032-4d1d-4f61-8c5a-cf689ebaad56" name="Changes" comment="ajout des exceptions dans les différents menus (normalement il n'en manque pas)">
+    <list default="true" id="8c614032-4d1d-4f61-8c5a-cf689ebaad56" name="Changes" comment="rajout d'exceptions + sauvegarde de la carte (pas du tout au point)">
+      <change afterPath="$PROJECT_DIR$/src/interface_graphique/MapPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface_graphique/MenuStartPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface_graphique/PlayerInfoPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/Armes/Anduril.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/Armes/Anduril.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/Bataille.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/Bataille.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_graphique/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_graphique/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rpg/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/Carte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/Combat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/Combat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/Inventaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/Inventaire.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,28 +53,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Bataille.executor": "Run",
-    "Application.Carte.executor": "Run",
-    "Application.MainFrame.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/java/RPG_LOTR",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/java/RPG_LOTR/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Bataille.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Carte.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainFrame.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java/RPG_LOTR&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/java/RPG_LOTR/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="interface_graphique" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\java\RPG_LOTR" />
     </key>
@@ -82,7 +85,7 @@
       <recent name="E:\java\RPG_LOTR\documents" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Bataille">
+  <component name="RunManager" selected="Application.MainFrame">
     <configuration name="Bataille" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rpg.Bataille" />
       <module name="RPG_LOTR" />
@@ -124,8 +127,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Bataille" />
         <item itemvalue="Application.MainFrame" />
+        <item itemvalue="Application.Bataille" />
         <item itemvalue="Application.Carte" />
       </list>
     </recent_temporary>
@@ -174,7 +177,8 @@
       <workItem from="1730804482371" duration="16000" />
       <workItem from="1730804596916" duration="1151000" />
       <workItem from="1730969725916" duration="757000" />
-      <workItem from="1731170470251" duration="8311000" />
+      <workItem from="1731170470251" duration="8678000" />
+      <workItem from="1731250428062" duration="6336000" />
     </task>
     <task id="LOCAL-00001" summary="création monstre et début de combat">
       <option name="closed" value="true" />
@@ -208,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731173574025</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="rajout d'exceptions + sauvegarde de la carte (pas du tout au point)">
+      <option name="closed" value="true" />
+      <created>1731179237968</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731179238019</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +244,8 @@
     <MESSAGE value="ajout de la fuite, et resetElements dans Carte" />
     <MESSAGE value="ajout des exceptions dans les différents menus" />
     <MESSAGE value="ajout des exceptions dans les différents menus (normalement il n'en manque pas)" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout des exceptions dans les différents menus (normalement il n'en manque pas)" />
+    <MESSAGE value="rajout d'exceptions + sauvegarde de la carte (pas du tout au point)" />
+    <option name="LAST_COMMIT_MESSAGE" value="rajout d'exceptions + sauvegarde de la carte (pas du tout au point)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RPG_LOTR$Bataille.ic" NAME="Bataille Coverage Results" MODIFIED="1729428386271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

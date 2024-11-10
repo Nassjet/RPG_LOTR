@@ -280,4 +280,11 @@ public class Carte implements Serializable {
         }
     }
 
+    public Tile getTileAt(int x, int y) {
+        if (x >= 0 && x < largeur && y >= 0 && y < hauteur) {
+            return map[x][y];
+        }
+        return null;
+    }
+
 }
